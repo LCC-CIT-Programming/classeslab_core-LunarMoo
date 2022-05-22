@@ -1,6 +1,8 @@
 ﻿using System;
-
 using DominoClasses;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace DominoTests
 {
@@ -9,16 +11,64 @@ namespace DominoTests
         static void Main(string[] args)
         {
 
-            TestDominoConstructors();
-            TestDominoToString();
-            TestDominoPropertyGetters();
-            TestDominoPropertySetters();
-            TestDominoFlip();
-            TestDominoScore();
-            TestDominoIsDouble();
-            TestDominoPropertySettersWithExceptions();
+            //TestDominoConstructors();
+            //TestDominoToString();
+            //TestDominoPropertyGetters();
+            //TestDominoPropertySetters();
+            //TestDominoFlip();
+            //TestDominoScore();
+            //TestDominoIsDouble();
+            //TestDominoPropertySettersWithExceptions();
+
+
+            TestBoneYardDeal();
+            TestBoneYardConstructor();
+            TestBoneYardShuffle();
+        }
+        static void TestBoneYardConstructor()
+        {
+            BoneYard d = new BoneYard();
+
+            Console.WriteLine("Testing deck of cards default constructor");
+            Console.WriteLine("NumCards.  Expecting 52. " + d.DominosRemaining);
+            Console.WriteLine("IsEmpty.   Expecting false. " + d.IsEmpty);
+            Console.WriteLine("ToString.  Expect a ton of cards in order.\n" + d.ToString());
+            Console.WriteLine();
         }
 
+        static void TestBoneYardShuffle()
+        {
+            BoneYard d = new BoneYard();
+            d.Shuffle();
+            Console.WriteLine("Testing deck of cards shuffle");
+            Console.WriteLine("NumCards.  Expecting 52. " + d.DominosRemaining);
+            Console.WriteLine("IsEmpty.   Expecting false. " + d.IsEmpty);
+            Console.WriteLine("First Card will rarely be the Ace of Clubs. " + d[0]);
+            Console.WriteLine("ToString.  Expect a ton of cards in shuffled order.\n" + d.ToString());
+            Console.WriteLine();
+        }
+
+        static void TestBoneYardDeal()
+        {
+            BoneYard d = new BoneYard();
+            Domino c = d.Draw();
+
+            Console.WriteLine("Testing deck of cards deal");
+            Console.WriteLine("NumCards.  Expecting 51. " + d.DominosRemaining);
+            Console.WriteLine("IsEmpty.   Expecting false. " + d.IsEmpty);
+            Console.WriteLine("Dealt Card should be Ace of Clubs. " + c);
+
+            // now let's deal them all and see what happens at the end
+            for (int i = 1; i <= 51; i++)
+                c = d.Draw();
+            Console.WriteLine("Dealt all 52 cards");
+            Console.WriteLine("NumCards.  Expecting 0. " + d.DominosRemaining);
+            Console.WriteLine("IsEmpty.   Expecting true. " + d.IsEmpty);
+            Console.WriteLine("Last Card should be King of Spades. " + c);
+            Console.WriteLine("Dealing again should return null. Expecting true. " + (d.Draw() == null));
+
+            Console.WriteLine();
+        }
         static void TestDominoConstructors()
         {
             Domino d1 = new Domino();
