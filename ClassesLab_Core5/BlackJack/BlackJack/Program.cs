@@ -1,4 +1,5 @@
 ﻿using System;
+using CardClasses;
 
 namespace BlackJack
 {
@@ -6,7 +7,17 @@ namespace BlackJack
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Deck d = new Deck();
+            d.Shuffle();
+
+            BJHand player = new BJHand(d, 2);
+            BJHand dealer = new BJHand(d, 2);
+
+            player.AddCard(d.Deal());
+
+
+            Console.WriteLine(player.ToString());
+            Console.WriteLine();
         }
     }
 }
