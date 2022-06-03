@@ -11,10 +11,14 @@ namespace DominoClasses
     { 
         private List<Domino> dominos = new List<Domino>();
 
+        public BoneYard()
+        {
+        }
+
         public BoneYard(int maxDots)
         {
-            for (int side1 = 0; side1 <= 6; side1++)
-                for (int side2 = 1; side2 <= 6; side2++)
+            for (int side1 = 0; side1 <= maxDots; side1++)
+                for (int side2 = side1; side2 <= maxDots; side2++)
                     dominos.Add(new Domino(side1, side2));
         }
 
@@ -67,6 +71,10 @@ namespace DominoClasses
                 dominos[rnd] = dominos[i];
                 dominos[i] = c;
             }
+        }
+        public void Sort()
+        {
+            dominos.Sort();
         }
 
         public override string ToString()
