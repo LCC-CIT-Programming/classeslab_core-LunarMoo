@@ -21,9 +21,34 @@ namespace DominoTests
             //TestDominoPropertySettersWithExceptions();
 
 
-            TestBoneYardDeal();
-            TestBoneYardConstructor();
-            TestBoneYardShuffle();
+            //TestBoneYardDeal();
+            //TestBoneYardConstructor();
+            //TestBoneYardShuffle();
+
+            //TestSorting();
+            //TestForEach();
+        }
+        
+        static void TestForEach()
+        {
+            MexicanTrain mt = new MexicanTrain();
+            mt.Add(new Domino(1, 2));
+            mt.Add(new Domino(1, 5));
+            mt.Add(new Domino(3, 4));
+            mt.Add(new Domino(6, 6));
+
+            foreach (Domino d in mt)
+            {
+                Console.WriteLine(d);
+            }
+        }
+        static void TestSorting()
+        {
+            BoneYard b = new BoneYard();
+            b.Shuffle();
+            Console.WriteLine(b);
+            b.Sort();
+            Console.WriteLine(b);
         }
         static void TestBoneYardConstructor()
         {
