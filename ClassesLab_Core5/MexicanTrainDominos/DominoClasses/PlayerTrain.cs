@@ -14,7 +14,7 @@ namespace DominoClasses
         protected Hand hand;
         protected bool isOpen = false;
 
-        public bool IsOpen
+        private bool IsOpen
         {
             get
             {
@@ -22,12 +22,12 @@ namespace DominoClasses
             }
         }
 
-        public void Open()
+        private void Open()
         {
             isOpen = true;
         }
 
-        public void Close()
+        private void Close()
         {
             isOpen = false;
         }
@@ -42,11 +42,11 @@ namespace DominoClasses
                 mustflip = false;
             return false;
         }
-        public PlayerTrain(Hand h): base()
+        private PlayerTrain(Hand h): base()
         {
             hand = h;
         }
-        public PlayerTrain(Hand h, int engineValue) : base(engineValue)
+        private PlayerTrain(Hand h, int engineValue) : base(engineValue)
         {
             hand = h;
         }
