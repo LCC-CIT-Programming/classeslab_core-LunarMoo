@@ -22,17 +22,17 @@ namespace DominoClasses
             }
         }
 
-        private void Open()
+        public void Open()
         {
             isOpen = true;
         }
 
-        private void Close()
+        public void Close()
         {
             isOpen = false;
         }
        
-        public override bool IsPlayable(Hand h, Domino d, out bool mustflip)
+        public abstract bool IsPlayable(Hand h, Domino d, out bool mustflip)
         {
             if (IsOpen)
                 return IsPlayable(d, out mustflip);
@@ -42,11 +42,11 @@ namespace DominoClasses
                 mustflip = false;
             return false;
         }
-        private PlayerTrain(Hand h): base()
+        public PlayerTrain(Hand h): base()
         {
             hand = h;
         }
-        private PlayerTrain(Hand h, int engineValue) : base(engineValue)
+        public PlayerTrain(Hand h, int engineValue) : base(engineValue)
         {
             hand = h;
         }
